@@ -1,4 +1,4 @@
-import 'package:app/app/views/my_home_view.dart';
+import 'package:app/app/views/home_page.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -7,7 +7,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Technologia',
-      home: MyHomeView(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
