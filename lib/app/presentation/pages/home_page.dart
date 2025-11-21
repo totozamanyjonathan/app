@@ -1,11 +1,14 @@
-import 'package:app/app/views/login_page.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:app/app/presentation/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 20.0,
@@ -14,7 +17,12 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image.asset("assets/images/OIP.webp"),
+            Expanded(
+              child: Image.asset(
+                "assets/images/OIP.webp",
+                fit: BoxFit.fitWidth,
+              ),
+            ),
             Text(
               "Let's\nget started!",
               style: TextStyle(
@@ -25,18 +33,13 @@ class HomePage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: 15.0,
+                vertical: 50.0,
               ).copyWith(top: 25.0),
               child: Text("Everything start from here."),
             ),
             FilledButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const LoginPage(),
-                  ),
-                );
+                context.router.push(const LoginRoute());
               },
               style: FilledButton.styleFrom(
                 backgroundColor: Colors.amber,
@@ -49,7 +52,9 @@ class HomePage extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                context.router.push(const RegisterRoute());
+              },
               style: FilledButton.styleFrom(
                 backgroundColor: const Color(0xDD3A3A3A),
                 foregroundColor: Colors.white,
